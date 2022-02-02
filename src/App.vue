@@ -1,17 +1,25 @@
 <template>
-  
-      <Users/>
+  <v-app>
+    <Header />
+    <router-view />
+  </v-app>
 </template>
 
 <script>
-import Users from './components/Users.vue';
+import Header from "@/components/Header";
 
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    Users,
+    Header,
   },
-
+  data: function(){
+    return{
+      users: [],
+    }
+  },
+  mounted() {
+    this.$store.dispatch("fetchUsers"); //вызывается при монтировании
+  },
 };
 </script>

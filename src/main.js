@@ -1,23 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Vuex from 'vuex'
+import vuetify from './plugins/vuetify'
+import router from './plugins/router'
+import axios from 'axios'
+import store from './store/store'
 
 Vue.config.productionTip = false
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment (state) {
-      state.count++
-    }
-  }
-})
+Vue.prototype.axios = axios
 
 new Vue({
+  vuetify,
+  router, 
+  store,
   render: h => h(App),
-  store: store
 }).$mount('#app')
